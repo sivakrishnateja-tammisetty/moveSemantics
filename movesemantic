@@ -1,0 +1,24 @@
+*Move semantic is a feature introduced in c++11 that enables efficient transfer of resources from one object to another object, avoiding unnecesaary copying of data.
+
+
+Eg:
+#include<iostream>
+#include<memory>
+using namespace std;
+void interchange(int &a,int&b)
+
+{
+  int temp=move(a);
+a=move(b);
+b=move(temp);
+}
+int main()
+{
+int a=10,b=20;
+cout<<a<<" "<<b<<endl;
+interchange(a,b);
+cout<<a<<" "<<b<<endl;
+
+
+  return 0;
+}
