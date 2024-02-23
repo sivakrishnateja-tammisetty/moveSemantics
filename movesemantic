@@ -1,3 +1,7 @@
+C++11 feature: Move semantic
+--------------
+
+
 *Move semantic is a feature introduced in c++11 that enables efficient transfer of resources from one object to another object, avoiding unnecesaary copying of data.
 
 
@@ -22,3 +26,48 @@ cout<<a<<" "<<b<<endl;
 
   return 0;
 }
+
+
+
+
+
+
+* L-value and R_value are closely releated to move semantics:
+
+
+
+Eg:
+#include<iostream>
+using namespace std;
+string printMe()
+{
+  return "Iam sivakrishnateja Tammisetty";
+}
+int main()
+{
+
+string s=printMe();
+cout<<s<<endl;
+ /*1
+Here printMe() is r-value,because it's reference  is not available to next line.
+Here two thing will hppen we call s and s will call printMe(),its copying,it occupies double memory
+We are copying printMe() inside this (s)
+*/
+ string &&ss=printMe();//move semantic
+ cout<<s<<endl;
+ /*
+ Its not copying any reference it's not keeping a track it's directly  referencing this function. 
+ */
+
+
+  return 0;
+}
+
+
+
+
+Note:
+ string s=printMe() ->Here copying things  are done,so double memoy will occupy.
+
+string &&ss=printMe() -> Here not copying things moving the things .
+
